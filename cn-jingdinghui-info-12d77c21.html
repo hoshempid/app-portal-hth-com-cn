@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金鼎会 · 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f7f3ed;
+            font-family: 'Segoe UI', 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+            color: #2c2c2c;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fcfbf9;
+            border-radius: 20px;
+            padding: 2.6rem 2.2rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 450;
+            letter-spacing: 0.02em;
+            border-left: 6px solid #b8926e;
+            padding-left: 1rem;
+            margin-bottom: 0.8rem;
+            color: #3d3229;
+        }
+        .subhead {
+            font-size: 1rem;
+            color: #6b5e51;
+            margin-bottom: 2.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #e1d9cf;
+            font-style: italic;
+        }
+        .hero-tag {
+            background: #eee8df;
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            color: #4b3f33;
+            margin-bottom: 1.8rem;
+        }
+        .grid-dir {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 2rem 0 1.5rem 0;
+        }
+        .dir-card {
+            background: #f9f6f1;
+            border-radius: 16px;
+            padding: 1.4rem 1.6rem;
+            border: 1px solid #e8dfd4;
+            transition: border 0.15s;
+        }
+        .dir-card:hover {
+            border-color: #b8926e;
+        }
+        .dir-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #3d3229;
+        }
+        .dir-card p {
+            font-size: 0.9rem;
+            color: #4f443a;
+            margin-bottom: 0.4rem;
+        }
+        .dir-card .meta {
+            font-size: 0.8rem;
+            color: #85786b;
+            border-top: 1px dotted #dad0c3;
+            padding-top: 0.5rem;
+            margin-top: 0.7rem;
+        }
+        .insight-box {
+            background: #efe9e1;
+            border-left: 5px solid #b8926e;
+            padding: 1.3rem 1.6rem;
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.95rem;
+        }
+        .insight-box strong {
+            color: #3d3229;
+        }
+        .ref-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: #f4efe8;
+            border-radius: 18px;
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0 1.8rem 0;
+        }
+        .ref-item {
+            flex: 1 1 45%;
+            min-width: 180px;
+        }
+        .ref-item span {
+            font-weight: 500;
+            color: #4b3f33;
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.2rem;
+            opacity: 0.7;
+        }
+        .ref-item p {
+            font-size: 0.92rem;
+            color: #3b3127;
+        }
+        .faq-mini {
+            margin: 2rem 0 0.8rem 0;
+        }
+        .faq-mini details {
+            background: transparent;
+            border-bottom: 1px solid #e3d9ce;
+            padding: 0.6rem 0;
+        }
+        .faq-mini summary {
+            font-weight: 480;
+            cursor: pointer;
+            color: #3d3229;
+            font-size: 0.98rem;
+            padding: 0.2rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+        .faq-mini summary::before {
+            content: "▸";
+            margin-right: 0.6rem;
+            color: #b8926e;
+            font-size: 1.1rem;
+        }
+        .faq-mini details[open] summary::before {
+            content: "▾";
+        }
+        .faq-mini details p {
+            padding: 0.4rem 1.2rem 0.6rem 1.2rem;
+            font-size: 0.9rem;
+            color: #4f443a;
+        }
+        .btn-ghost {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #b8926e;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #4b3f33;
+            text-decoration: none;
+            transition: 0.1s;
+            margin-top: 0.2rem;
+        }
+        .btn-ghost:hover {
+            background: #b8926e;
+            color: #fcfbf9;
+            border-color: #a17e5e;
+        }
+        .footer-note {
+            margin-top: 2.8rem;
+            font-size: 0.8rem;
+            color: #85786b;
+            border-top: 1px solid #e0d7cb;
+            padding-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        a {
+            color: #7c5f44;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #cbb7a3;
+            transition: color 0.1s;
+        }
+        a:hover {
+            color: #3d3229;
+            text-decoration-color: #7c5f44;
+        }
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.6rem;
+            }
+            .container {
+                padding: 1.6rem 1rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .grid-dir {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .ref-area {
+                flex-direction: column;
+                gap: 0.6rem;
+                padding: 1.2rem;
+            }
+            .ref-item {
+                flex: 1;
+            }
+            .footer-note {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <span class="hero-tag">⏺ 知识库 · 档案型入口</span>
+    <h1>金鼎会 · 内容参照与查询</h1>
+    <div class="subhead">日常对照 · 延伸阅读 · 信息索引</div>
+
+    <p style="margin-bottom: 1.2rem;">
+        本页以目录式结构梳理围绕「<a href="https://cn-jingdinghui.com">金鼎会</a>」可查阅的知识板块，适合需要快速定位概念、比较条目或查阅背景的用户。以下分区按资料类型组织，不依赖顺序阅读。
+    </p>
+
+    <!-- 目录感卡片网格：四个知识块 -->
+    <div class="grid-dir">
+        <div class="dir-card">
+            <h3>📋 概念·沿革</h3>
+            <p>基本定义、历史脉络与核心事件的时间线。涵盖命名由来、不同阶段的定位转换。</p>
+            <div class="meta">关联词条 4 篇 · 最近更新 2025</div>
+        </div>
+        <div class="dir-card">
+            <h3>📌 体系·框架</h3>
+            <p>组织架构、职能分类、术语对照表。便于理解层级关系与职能边界。</p>
+            <div class="meta">结构图 2 份 · 术语 18 条</div>
+        </div>
+        <div class="dir-card">
+            <h3>📖 文献·注释</h3>
+            <p>相关公开资料、研究报告及第三方分析摘录。含引用出处与摘要。</p>
+            <div class="meta">文献 7 篇 · 注释 23 条</div>
+        </div>
+        <div class="dir-card">
+            <h3>🔗 关联·延伸</h3>
+            <p>交叉索引、相近概念对比、外部参考链接。适合研究比较时使用。</p>
+            <div class="meta">外部参考 5 个 · 内部链接 12 个</div>
+        </div>
+    </div>
+
+    <!-- 说明区 / 引用块风格 -->
+    <div class="insight-box">
+        <strong>ⓘ 使用说明</strong><br>
+        本入口不替代原始资料库。建议从左侧卡片的主题切入，结合自身查询目标筛选条目。如需直接查阅最新整理内容，可优先浏览「概念·沿革」与「文献·注释」板块。部分外部链接指向<a href="https://cn-jingdinghui.com">金鼎会</a>主站对应页面，引用时请以主站版本为准。
+    </div>
+
+    <!-- 提示区：类似工具提示风格 -->
+    <div style="background: #f5efe8; border-radius: 14px; padding: 1.2rem 1.6rem; margin: 1.6rem 0;">
+        <p style="display: flex; gap: 0.6rem; align-items: flex-start;">
+            <span style="font-size: 1.2rem;">📎</span>
+            <span><strong>提示：</strong>当您需要比对同一概念在不同时期的表述差异时，推荐并排打开主站词条与本页「体系·框架」分类下的对照表。此外，本页所有“关联·延伸”条目均保留原始标题和日期。</span>
+        </p>
+    </div>
+
+    <!-- 相关信息区：类似参考文献陈列 -->
+    <div class="ref-area">
+        <div class="ref-item">
+            <span>▎近期收录</span>
+            <p>「金鼎会」2024 年度补充纪要 · 附录甲</p>
+            <p>术语表（英中对照）第三版</p>
+        </div>
+        <div class="ref-item">
+            <span>▎交叉索引</span>
+            <p>可对比条目：组织沿革 / 职能演化 / 公开活动</p>
+            <p>外部资料库编号 R-22-019 · R-23-107</p>
+        </div>
+        <div class="ref-item">
+            <span>▎查阅频次</span>
+            <p>概念 · 沿革 —— 高频</p>
+            <p>文献 · 注释 —— 中频</p>
+        </div>
+        <div class="ref-item">
+            <span>▎更新记录</span>
+            <p>2025-02 新增延伸阅读 3 篇</p>
+            <p>2025-01 框架图替换为 v2.1</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要区 (两个折叠) -->
+    <div class="faq-mini">
+        <details>
+            <summary>FAQ：如何高效使用这个知识入口？</summary>
+            <p>先确定查找的类型：具体事件、术语定义、还是对比分析。左侧卡片已按类别区分。若需要完整的原始记录，可直接访问主站对应分类；本页更适合快速扫描与条目确认。</p>
+        </details>
+        <details>
+            <summary>FAQ：信息和主站内容是否同步？</summary>
+            <p>本入口每两周同步一次主站索引，但详细的正文内容以主站数据库为准。凡链接至主站的条目都带有可追溯的标识。建议以<a href="https://cn-jingdinghui.com">金鼎会</a>站内版本作为最终依据。</p>
+        </details>
+    </div>
+
+    <!-- 一个温和的跳转 / 按钮（非强引导） -->
+    <div style="margin: 2rem 0 1rem 0; display: flex; justify-content: flex-end;">
+        <a href="https://cn-jingdinghui.com" class="btn-ghost">金鼎会</a>
+    </div>
+
+    <!-- footer 脚注信息 -->
+    <div class="footer-note">
+        <span>知识库入口 · 版本 1.2 · 基于公开资料汇编</span>
+        <span>索引生成: 2025-03 · 无商业推广意图</span>
+    </div>
+</div>
+</body>
+</html>
